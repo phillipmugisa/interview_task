@@ -1,7 +1,9 @@
 {% extends "../utils/layout.html" %}
+{% load static %}
 
 {% block content %}
-    <form action="{% url 'manager.home' %}" method="POST" class="search-form">
+    <form action="{% url 'manager:home' %}" method="POST" class="search-form" style="display: flex; gap: 1rem">
+        {% csrf_token %}
         <div class="form-group">
             <label for="">Enter name to search for:</label>
             <input type="text" name="name" id="">
@@ -12,7 +14,9 @@
     </form>
 
 
+    <a href="{% static file_name %}">View Excel File: {{ file_name }}</a>
+
     {% if results %}
         {% include './partials/_result_list.html' with results=results %}
-    {% end %}
+    {% endif %}
 {% endblock %}
