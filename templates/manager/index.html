@@ -1,0 +1,18 @@
+{% extends "../utils/layout.html" %}
+
+{% block content %}
+    <form action="{% url 'manager.home' %}" method="POST" class="search-form">
+        <div class="form-group">
+            <label for="">Enter name to search for:</label>
+            <input type="text" name="name" id="">
+        </div>
+        <div class="form-group">
+            <input type="submit" value="search">
+        </div>
+    </form>
+
+
+    {% if results %}
+        {% include './partials/_result_list.html' with results=results %}
+    {% end %}
+{% endblock %}
